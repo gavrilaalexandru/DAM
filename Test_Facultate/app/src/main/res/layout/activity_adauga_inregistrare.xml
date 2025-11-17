@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdaugaInregistrare">
+
+    <CheckBox
+        android:id="@+id/cbCamin"
+        android:layout_width="150dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="68dp"
+        android:text="Camin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTextFacilitati" />
+
+    <CheckBox
+        android:id="@+id/cbCantina"
+        android:layout_width="136dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="52dp"
+        android:text="Cantina"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTextFacilitati" />
+
+    <CheckBox
+        android:id="@+id/cbSalaSport"
+        android:layout_width="146dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="56dp"
+        android:text="Sala de Sport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbCantina" />
+
+    <CheckBox
+        android:id="@+id/cbBiblioteca"
+        android:layout_width="140dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="28dp"
+        android:text="Biblioteca"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbCamin" />
+
+    <EditText
+        android:id="@+id/etAdresa"
+        android:layout_width="359dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="Introduceti adresa"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etNume"
+        android:layout_width="351dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Introduceti numele"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAdresa" />
+
+    <EditText
+        android:id="@+id/etNrStud"
+        android:layout_width="349dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Introduceti numarul de studenti"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNume" />
+
+    <EditText
+        android:id="@+id/etAn"
+        android:layout_width="350dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Introduceti anul infiintarii"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNrStud" />
+
+    <TextView
+        android:id="@+id/tvTextFacilitati"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:text="Selectati facilitatile disponibile: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAn" />
+
+    <Button
+        android:id="@+id/btnAdauga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="Adauga"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbSalaSport" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
