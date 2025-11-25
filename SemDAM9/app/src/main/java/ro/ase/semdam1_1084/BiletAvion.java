@@ -1,9 +1,26 @@
 package ro.ase.semdam1_1084;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Entity(tableName = "bilete")
 public class BiletAvion implements Serializable {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String destinatie;
     private Date dataZbor;
     private float pret;
@@ -18,6 +35,7 @@ public class BiletAvion implements Serializable {
         this.categorie_Bilet = categorie_Bilet;
     }
 
+    @Ignore
     public BiletAvion() {}
 
     public String getDestinatie() {
@@ -60,6 +78,7 @@ public class BiletAvion implements Serializable {
         this.categorie_Bilet = categorie_Bilet;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "BiletAvion{" +

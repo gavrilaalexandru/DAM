@@ -83,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         listaBilete.remove(biletAvion);
+
+                        BiletAvionDB database = BiletAvionDB.getInstance(getApplicationContext());
+                        database.getBileteDAO().delete(biletAvion);
+
+
                         adapter.notifyDataSetChanged();
                         Toast.makeText(getApplicationContext(), "Am sters " + biletAvion.toString(), Toast.LENGTH_LONG).show();
                         dialogInterface.cancel();
@@ -107,6 +112,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        BiletAvionDB database = BiletAvionDB.getInstance(getApplicationContext());
+        // listaBilete = database.getBileteDAO().getAll();
+        listaBilete = database.getBileteDAO().getBileteByCompanie("Tarom");
+
+        CustomAdapter adapter = new CustomAdapter(getApplicationContext(), R.layout.elem_listview, listaBilete, getLayoutInflater());
+        listView.setAdapter(adapter);
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -115,6 +132,9 @@ public class MainActivity extends AppCompatActivity {
             if (biletAvion != null) {
                 // Toast.makeText(getApplicationContext(), biletAvion.toString(), Toast.LENGTH_LONG).show();
                 listaBilete.add(biletAvion);
+
+                BiletAvionDB database = BiletAvionDB.getInstance(getApplicationContext());
+                database.getBileteDAO().insert(biletAvion);
 //                ArrayAdapter<BiletAvion> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaBilete);
                 CustomAdapter adapter = new CustomAdapter(getApplicationContext(), R.layout.elem_listview, listaBilete, getLayoutInflater());
                 listView.setAdapter(adapter);
@@ -127,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
                 listaBilete.get(poz).setPret(biletAvion.getPret());
                 listaBilete.get(poz).setCompanie(biletAvion.getCompanie());
                 listaBilete.get(poz).setCategorie_Bilet(biletAvion.getCategorie_Bilet());
+
+                BiletAvionDB database = BiletAvionDB.getInstance(getApplicationContext());
+                database.getBileteDAO().update(listaBilete.get(poz));
 
                 // ArrayAdapter adapter = (ArrayAdapter) listView.getAdapter();
                 CustomAdapter adapter = (CustomAdapter) listView.getAdapter();
@@ -155,6 +178,10 @@ public class MainActivity extends AppCompatActivity {
                 protected void onPostExecute(InputStream inputStream) {
 
                     listaBilete.addAll(this.biletAvionList);
+
+                    BiletAvionDB database = BiletAvionDB.getInstance(getApplicationContext());
+                    database.getBileteDAO().insert(biletAvionList);
+
                     CustomAdapter adapter = new CustomAdapter(getApplicationContext(), R.layout.elem_listview, listaBilete, getLayoutInflater());
                     listView.setAdapter(adapter);
                 }
@@ -180,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
                 protected void onPostExecute(String s) {
                     progressDialog.cancel();
                     listaBilete.addAll(this.biletAvionListJSON);
+                    BiletAvionDB database = BiletAvionDB.getInstance(getApplicationContext());
+                    database.getBileteDAO().insert(biletAvionListJSON);
                     CustomAdapter adapter = new CustomAdapter(getApplicationContext(), R.layout.elem_listview, listaBilete, getLayoutInflater());
                     listView.setAdapter(adapter);
                 }
