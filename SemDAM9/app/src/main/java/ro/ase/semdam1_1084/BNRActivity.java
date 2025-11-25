@@ -14,6 +14,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -80,5 +86,33 @@ public class BNRActivity extends AppCompatActivity implements View.OnClickListen
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void scrieInFisier(CursValutar cursValutar, String denumireFisier) throws IOException {
+
+        FileOutputStream fileOutputStream = openFileOutput(denumireFisier, BNRActivity.MODE_PRIVATE);
+        DataOutputStream dos = new DataOutputStream(fileOutputStream);
+        dos.writeUTF(cursValutar.getDataCurs());
+        dos.writeUTF(cursValutar.getCursEUR());
+        dos.writeUTF(cursValutar.getCursUSD());
+        dos.writeUTF(cursValutar.getCursGBP());
+        dos.writeUTF(cursValutar.getCursXAU());
+
+        dos.flush();
+        fileOutputStream.close();
+    }
+
+    private CursValutar citesteDinFisier(String denumireFisier) throws IOException {
+
+        FileInputStream fileInputStream = openFileInput(denumireFisier);
+        DataInputStream dis = new DataInputStream(fileInputStream);
+        String dataCurs = dis.readUTF();
+        String cursEUR = dis.readUTF();
+        String cursUSD = dis.readUTF();
+        String cursGBP = dis.readUTF();
+        String cursXAU = dis.readUTF();
+        CursValutar cursValutar = new CursValutar(dataCurs, cursEUR, cursUSD, cursGBP, cursXAU);
+        fileInputStream.close();
+        return cursValutar;
     }
 }
