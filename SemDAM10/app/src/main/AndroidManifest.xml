@@ -30,5 +30,9 @@
             android:name=".BNRActivity"
             android:exported="true" >
         </activity>
+        <activity
+            android:name=".ViewFirebase"
+            android:exported="true" >
+        </activity>
     </application>
 </manifest>

@@ -27,6 +27,9 @@ public class BiletAvion implements Serializable {
     private String companie; // Tarom, Ryanair, WizzAir, HiSky
     private String categorie_Bilet; // ECONOMY, BUSINESS
 
+    @Ignore
+    private String uid;
+
     public BiletAvion(String destinatie, Date dataZbor, float pret, String companie, String categorie_Bilet) {
         this.destinatie = destinatie;
         this.dataZbor = dataZbor;
@@ -76,6 +79,14 @@ public class BiletAvion implements Serializable {
 
     public void setCategorie_Bilet(String categorie_Bilet) {
         this.categorie_Bilet = categorie_Bilet;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     @NonNull

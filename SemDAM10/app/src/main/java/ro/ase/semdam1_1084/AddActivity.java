@@ -13,10 +13,17 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -97,6 +104,7 @@ public class AddActivity extends AppCompatActivity {
 
                         BiletAvion biletAvion = new BiletAvion(destinatie, dataZbor, pret, companie, categorieBilet);
                         // Toast.makeText(getApplicationContext(), biletAvion.toString(), Toast.LENGTH_LONG).show();
+                        salvareInFirebase(biletAvion);
 
                         intent.putExtra(ADD_BILET, biletAvion);
                         setResult(RESULT_OK, intent);
@@ -109,6 +117,27 @@ public class AddActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Eroare introducere date!", Toast.LENGTH_LONG).show();
                     }
                 }
+            }
+        });
+    }
+
+    private void salvareInFirebase(BiletAvion biletAvion) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("semdam1084-alex-default-rtdb");
+        myRef.child("semdam1084-alex-default-rtdb").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                biletAvion.setUid(myRef.child("semdam1084-alex-default-rtdb")
+                        .push()
+                        .getKey());
+                myRef.child("semdam1084-alex-default-rtdb")
+                        .child(biletAvion.getUid())
+                        .setValue(biletAvion);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

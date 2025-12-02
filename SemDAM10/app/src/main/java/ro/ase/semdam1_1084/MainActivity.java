@@ -116,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         BiletAvionDB database = BiletAvionDB.getInstance(getApplicationContext());
-        // listaBilete = database.getBileteDAO().getAll();
-        listaBilete = database.getBileteDAO().getBileteByCompanie("Tarom");
+        listaBilete = database.getBileteDAO().getAll();
+        // listaBilete = database.getBileteDAO().getBileteByCompanie("Tarom");
 
         CustomAdapter adapter = new CustomAdapter(getApplicationContext(), R.layout.elem_listview, listaBilete, getLayoutInflater());
         listView.setAdapter(adapter);
@@ -219,6 +219,11 @@ public class MainActivity extends AppCompatActivity {
                 throw new RuntimeException(e);
             }
             return true;
-        } else return item.getItemId() == R.id.optiune4;
+        } else if (item.getItemId() == R.id.optiune4) {
+            Intent intent1 = new Intent(getApplicationContext(), ViewFirebase.class);
+            startActivity(intent1);
+            return true;
+        }
+        return false;
     }
 }
