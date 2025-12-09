@@ -73,7 +73,10 @@ public class MainActivity extends AppCompatActivity {
                 BiletAvion biletAvion = listaBilete.get(position);
                 ArrayAdapter adapter = (ArrayAdapter) listView.getAdapter();
 
-                AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).setTitle("Confirmare stergere").setMessage("Doriti sa stergeti?").setNegativeButton("NU", new DialogInterface.OnClickListener() {
+                AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Confirmare stergere")
+                        .setMessage("Doriti sa stergeti?")
+                        .setNegativeButton("NU", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getApplicationContext(), "Nu am sters nimic!", Toast.LENGTH_LONG).show();
@@ -221,6 +224,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.optiune4) {
             Intent intent1 = new Intent(getApplicationContext(), ViewFirebase.class);
+            startActivity(intent1);
+            return true;
+        } else if (item.getItemId() == R.id.optiune5) {
+            Intent intent1 = new Intent(getApplicationContext(), BarChartActivity.class);
+            intent1.putExtra("list", (ArrayList)listaBilete);
             startActivity(intent1);
             return true;
         }

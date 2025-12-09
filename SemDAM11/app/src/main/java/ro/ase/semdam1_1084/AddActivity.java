@@ -1,6 +1,7 @@
 package ro.ase.semdam1_1084;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -105,6 +106,15 @@ public class AddActivity extends AppCompatActivity {
                         BiletAvion biletAvion = new BiletAvion(destinatie, dataZbor, pret, companie, categorieBilet);
                         // Toast.makeText(getApplicationContext(), biletAvion.toString(), Toast.LENGTH_LONG).show();
                         salvareInFirebase(biletAvion);
+
+                        SharedPreferences spf = getSharedPreferences("bileteAvion", 0);
+                        SharedPreferences.Editor editor = spf.edit();
+                        editor.putString("destinatie", biletAvion.getDestinatie());
+                        editor.putString("dataZbor", biletAvion.getDataZbor().toString());
+                        editor.putFloat("pret", biletAvion.getPret());
+                        editor.putString("companie", biletAvion.getCompanie());
+                        editor.putString("categorieBilet", biletAvion.getCategorie_Bilet());
+                        editor.apply();
 
                         intent.putExtra(ADD_BILET, biletAvion);
                         setResult(RESULT_OK, intent);
