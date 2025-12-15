@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ClientiJSON</string>
+    <string name="incarca_fisier">Incarca fisier</string>
+    <string name="salveaza_date">Salveaza date</string>
+    <string name="incarca_date">Incarca date</string>
+    <string name="despre">Despre</string>
+    <string name="statistica">Statistica</string>
 </resources>
