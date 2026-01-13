@@ -1,5 +1,6 @@
 package ro.ase.semdam1_1084;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -176,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent1);
             return true;
         } else if (item.getItemId() == R.id.optiune2) {
-            ExtractXML extractXML = new ExtractXML() {
+            @SuppressLint("StaticFieldLeak") ExtractXML extractXML = new ExtractXML() {
                 @Override
                 protected void onPostExecute(InputStream inputStream) {
 
@@ -196,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         } else if (item.getItemId() == R.id.optiune3) {
-            ExtractJSON extractJSON = new ExtractJSON() {
+            @SuppressLint("StaticFieldLeak") ExtractJSON extractJSON = new ExtractJSON() {
                 ProgressDialog progressDialog;
 
                 @Override
@@ -229,6 +230,10 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.optiune5) {
             Intent intent1 = new Intent(getApplicationContext(), BarChartActivity.class);
             intent1.putExtra("list", (ArrayList)listaBilete);
+            startActivity(intent1);
+            return true;
+        } else if (item.getItemId() == R.id.optiune6) {
+            Intent intent1 = new Intent(getApplicationContext(), MapsActivity.class);
             startActivity(intent1);
             return true;
         }

@@ -13,4 +13,6 @@
     <string name="extrage_date_din_xml">Extrage date din XML</string>
     <string name="extrage_date_din_json">Extrage date din JSON</string>
     <string name="grafic_desenat">Grafic desenat</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="google_maps">Google Maps</string>
 </resources>
