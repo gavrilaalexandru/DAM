@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SemDAM1_1084</string>
+    <string name="acesta_este_un_control_de_test">Acesta este un control de test</string>
+    <string name="afisare_curs_valutar">Afisare curs valutar</string>
+    <string name="introduce_ti_data_zborului">Introduce-ti data zborului</string>
+    <string name="introduce_ti_pretul">Introduce-ti pretul</string>
+    <string name="selectati_compania">Selectati compania:</string>
+    <string name="categorie_bilet">Categorie bilet:</string>
+    <string name="adauga_bilet">Adauga bilet</string>
+    <string name="introduce_ti_destinatia">Introduce-ti destinatia</string>
+    <string name="activitate_bnr">Activitate BNR</string>
+    <string name="vizualizare_baza_de_date">Vizualizare baza de date</string>
+    <string name="extrage_date_din_xml">Extrage date din XML</string>
+    <string name="extrage_date_din_json">Extrage date din JSON</string>
+    <string name="grafic_desenat">Grafic desenat</string>
+</resources>
